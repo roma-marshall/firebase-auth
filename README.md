@@ -1,4 +1,4 @@
-# White-Label Shop
+# Firebase + Vue3
 
 The Open Source eCommerce authentication example built using Vue3, Firebase and Pinia.
 
