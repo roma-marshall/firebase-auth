@@ -33,7 +33,9 @@
 import { ref } from 'vue'
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'
 import { useRouter } from 'vue-router'
+import { useNotification } from '@kyvg/vue3-notification'
 
+const { notify }  = useNotification()
 const email = ref()
 const password = ref()
 const errMsg = ref()
@@ -44,6 +46,16 @@ const register = async () => {
   try {
     await createUserWithEmailAndPassword(auth, email.value, password.value);
     await sendEmailVerification(auth.currentUser)
+
+    notify({
+      title: 'A verification email has been sent',
+      type: 'notification',
+      speed: 500,
+      duration: 1500,
+      max: 1,
+      ignoreDuplicates: true
+    })
+
     await router.push('/feed')
   } catch (error) {
     console.log(error.code)

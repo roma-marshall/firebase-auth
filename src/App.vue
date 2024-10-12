@@ -9,6 +9,7 @@
       </router-view>
     </main>
     <Footer />
+    <notifications position="top center" />
   </div>
 </template>
 
