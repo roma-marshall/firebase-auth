@@ -1,6 +1,6 @@
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_API_KEY, // local
-    // apiKey: process.env.VITE_API_KEY, // vercel
+    // apiKey: import.meta.env.VITE_API_KEY, // local
+    apiKey: process.env.VITE_API_KEY, // vercel
     authDomain: "auth.domain.firebaseapp.com",
     projectId: "vue-app",
     storageBucket: "vue-app-db.appspot.com",
