@@ -1,4 +1,4 @@
-# Firebase + Vue3
+# Vue3 + Firebase
 
 The Open Source eCommerce authentication built using Vue3, Firebase and Pinia.
 
