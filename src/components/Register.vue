@@ -38,8 +38,8 @@ const email = ref()
 const password = ref()
 const errMsg = ref()
 const router = useRouter()
-
 const auth = getAuth()
+
 const register = async () => {
   try {
     await createUserWithEmailAndPassword(auth, email.value, password.value);

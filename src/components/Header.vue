@@ -14,6 +14,7 @@
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-12">
+        <router-link to="/" class="text-sm font-semibold leading-6 text-gray-900">Home</router-link>
         <Popover class="relative">
           <PopoverButton class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
             Product
@@ -181,9 +182,8 @@ const callsToAction = [
 ]
 
 
-let auth
+const auth = getAuth()
 onMounted(() => {
-  auth = getAuth()
   onAuthStateChanged(auth, (user) => {
     if (user) {
       userEmail.value = user.email.slice(0, 2).toUpperCase()
