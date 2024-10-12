@@ -46,27 +46,29 @@ const register = async () => {
   try {
     await createUserWithEmailAndPassword(auth, email.value, password.value);
     await sendEmailVerification(auth.currentUser)
-
-    notify({
-      title: 'A verification email has been sent',
-      type: 'notification',
-      speed: 500,
-      duration: 1500,
-      max: 1,
-      ignoreDuplicates: true
-    })
-
+    notifyMe('A verification email has been sent')
     await router.push('/feed')
   } catch (error) {
     console.log(error.code)
     switch (error.code) {
       case 'auth/email-already-in-use':
-        errMsg.value = 'Email already in use'
+        notifyMe('Email already in use')
         break
       default:
-        errMsg.value = 'Unexpected error'
+        notifyMe('Unexpected error')
         break
     }
   }
+}
+
+const notifyMe = (title) => {
+  notify({
+    title: title,
+    type: 'notification',
+    speed: 500,
+    duration: 1500,
+    max: 1,
+    ignoreDuplicates: true
+  })
 }
 </script>
