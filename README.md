@@ -11,7 +11,7 @@ npm run dev
 ```
 Get your firebase `apiKey` from [firebase console](https://firebase.google.com/)
 
-Then go to `src/firebase/config.js` and setup your firebase `apiKey`
+Then go to `src/firebase/config.js` and set up your firebase `apiKey`
 
 ```javascript
 const firebaseConfig = {
