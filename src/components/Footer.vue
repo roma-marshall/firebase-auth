@@ -3,13 +3,8 @@
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
       <div class="md:flex md:justify-between">
         <div class="flex mb-6 md:mb-0">
-          <div id="white-logo-1" class="h-10 w-10 flex items-center justify-center border-dashed border-2 border-white rounded-full">
+          <div class="h-10 w-10 flex items-center justify-center border-dashed border-2 border-white rounded-full">
             <CakeIcon class="h-7 w-7 text-white" />
-          </div>
-          <div id="white-logo-2" class="hidden text-[#003869]">
-            <svg aria-hidden="true" class="flex-none w-20 h-8" fill="currentColor">
-              <use xlink:href="../icons/icons.svg#btc" />
-            </svg>
           </div>
         </div>
         <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
