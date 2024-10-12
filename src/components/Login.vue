@@ -8,7 +8,6 @@
         <section aria-labelledby="email" class="pt-10 pb-24">
           <div class="bg-gray-50 p-7 rounded-lg">
             <div class="flex flex-col gap-x-8 gap-y-10">
-              <span v-if="errMsg">{{ errMsg }}</span>
               <div class="flex flex-col space-y-4 w-full">
                 <label for="email" class="text-sm font-medium text-gray-600">Email</label>
                 <input v-model="email" type="text" id="email" name="email" autocomplete="email" class="border border-gray-300 rounded outline-indigo-500 px-3 py-1.5">
@@ -33,10 +32,11 @@
 import { ref } from 'vue'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { useRouter } from 'vue-router'
+import { useNotification } from '@kyvg/vue3-notification'
 
+const { notify }  = useNotification()
 const email = ref()
 const password = ref()
-const errMsg = ref()
 const router = useRouter()
 const auth = getAuth()
 
@@ -50,18 +50,29 @@ const login = () => {
         console.log(error.code)
         switch (error.code) {
           case 'auth/invalid-email':
-            errMsg.value = 'Invalid email'
+            notifyMe('Invalid email')
             break
           case 'auth/user-not-found':
-            errMsg.value = 'User not found'
+            notifyMe('User not found')
             break
           case 'auth/missing-password':
-            errMsg.value = 'Missing password'
+            notifyMe('Missing password')
             break
           default:
-            errMsg.value = 'Email or password incorrect'
+            notifyMe('Email or password incorrect')
             break
         }
       })
+}
+
+const notifyMe = (title) => {
+  notify({
+    title: title,
+    type: 'notification',
+    speed: 500,
+    duration: 1500,
+    max: 1,
+    ignoreDuplicates: true
+  })
 }
 </script>
