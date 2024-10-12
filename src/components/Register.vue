@@ -31,7 +31,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'
 import { useRouter } from 'vue-router'
 
 const email = ref()
@@ -39,22 +39,22 @@ const password = ref()
 const errMsg = ref()
 const router = useRouter()
 
-const register = () => {
-  createUserWithEmailAndPassword(getAuth(), email.value, password.value)
-      .then((data) => {
-        console.log('Successfully registered!')
-        router.push('/feed')
-      })
-      .catch((error) => {
-        console.log(error.code)
-        switch (error.code) {
-          case 'auth/email-already-in-use':
-            errMsg.value = 'Email already in use'
-            break
-          default:
-            errMsg.value = 'Unexpected error'
-            break
-        }
-      })
+const auth = getAuth()
+const register = async () => {
+  try {
+    await createUserWithEmailAndPassword(auth, email.value, password.value);
+    await sendEmailVerification(auth.currentUser)
+    await router.push('/feed')
+  } catch (error) {
+    console.log(error.code)
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+        errMsg.value = 'Email already in use'
+        break
+      default:
+        errMsg.value = 'Unexpected error'
+        break
+    }
+  }
 }
 </script>

@@ -1,5 +1,5 @@
 const firebaseConfig = {
-    apiKey: "secretapikeyfirebase",
+    apiKey: import.meta.env.VITE_API_KEY,
     authDomain: "auth.domain.firebaseapp.com",
     projectId: "vue-app",
     storageBucket: "vue-app-db.appspot.com",
