@@ -2,16 +2,11 @@
 
 The Open Source eCommerce authentication built using Vue3, Firebase and Pinia.
 
-## Usage
+## Code snippets
 
-```
-git clone https://github.com/roma-marshall/firebase-auth.git
-cd firebase-auth
-npm run dev
-```
-Get your firebase `apiKey` from [firebase console](https://firebase.google.com/)
+1. Get your firebase `apiKey` from [firebase console](https://firebase.google.com/)
 
-Then go to `src/firebase/config.js` and set up your firebase `apiKey`
+2. Then go to `src/firebase/config.js` and set up your firebase `apiKey`
 
 ```javascript
 const firebaseConfig = {
@@ -26,6 +21,13 @@ const firebaseConfig = {
 export default firebaseConfig
 ```
 
+## Recommended Installation
+
+```
+git clone https://github.com/roma-marshall/firebase-auth.git
+cd firebase-auth
+npm run dev
+```
 
 ## License
 MIT License
